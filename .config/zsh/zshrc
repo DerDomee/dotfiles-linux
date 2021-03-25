@@ -1,0 +1,8 @@
+
+
+
+alias p="sudo pacman --color=always"
+alias pacman="pacman --color=always"
+alias yay="yay --color=always"
+alias vim="nvim"
+alias config="/usr/bin/git --git-dir=$HOME/git/linux-dotfiles/ --work-tree=$HOME"
