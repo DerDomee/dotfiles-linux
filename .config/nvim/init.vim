@@ -5,6 +5,13 @@
 " #                                       #
 " #########################################
 
+" ########
+" Plugins
+" ########
+call plug#begin('~/.config/nvim/plugged')
+Plug 'morhetz/gruvbox'
+call plug#end()
+
 " ##################
 " Interface options
 " ##################
@@ -17,7 +24,7 @@ set noerrorbells
 set visualbell
 set mouse=a
 set title
-
+colorscheme gruvbox
 
 " ####################
 " Text render options
