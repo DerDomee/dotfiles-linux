@@ -5,15 +5,12 @@
 " #                                       #
 " #########################################
 
-" Import plugins
-runtime plugins/_init.vim
-
-" Setup interface and editor
-runtime interface.vim
-runtime editor.vim
-
-" Plugin configuration for every plugin
-runtime plugins/nerdtree.vim
-
-" Setup keybindings
-runtime keybindings.vim
+" ####################
+" Indentation options
+" ####################
+set autoindent
+set expandtab
+set shiftround
+set shiftwidth=4
+set smarttab
+set tabstop=4
