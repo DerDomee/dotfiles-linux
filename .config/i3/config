@@ -34,11 +34,14 @@ focus_wrapping yes
 # Set borders
 # #############
 
+# Disable window title borders
 for_window [class="$.*"] border pixel 2
+new_window 1pixel
 
-# ###
+
+# ############
 # Set colors
-# ###
+# ############
 #                           Border    Backgr.   Text      Indicator Childborder
 client.focused              #65b619   #65b619   #ffffff   #65b619   #65b619
 client.focused_inactive     #65b619   #65b619   #ffffff   #65b619   #65b619
