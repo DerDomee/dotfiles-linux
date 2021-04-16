@@ -1,0 +1,189 @@
+# i3 config file (v4)
+###############################
+#                             #
+#        i3-gaps config       #
+#         by derdomee_        #
+#                             #
+###############################
+
+# Set Super key as i3 mod key
+set $mod Mod4
+
+font pango:monospace 8
+
+# ###############
+# Set behaviour
+# ###############
+
+# Do not allow mouse movement to switch window focus (Clicking still changes focus)
+focus_follows_mouse no
+
+# When switching between monitors when focussing another window or workspaces,
+# move the mouse to the center of that window
+mouse_warping output
+
+# When a window is fullscreen, only show popup windows from this windows class.
+# Other windows are ignored
+popup_during_fullscreen smart
+
+# Cycle through windows in a container when focus to the edge of the container
+# e.g: Right-most window is focused. Change focus to right to focus left-most window.
+focus_wrapping yes
+
+# #############
+# Set borders
+# #############
+
+for_window [class="$.*"] border pixel 2
+
+# ###
+# Set colors
+# ###
+#                           Border    Backgr.   Text      Indicator Childborder
+client.focused              #65b619   #65b619   #ffffff   #65b619   #65b619
+client.focused_inactive     #65b619   #65b619   #ffffff   #65b619   #65b619
+client.unfocused            #333333   #222222   #888888   #292d2e   #222222
+client.urgent               #2f343a   #900000   #ffffff   #900000   #900000
+client.placeholder          #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
+client.background           #ffffff
+
+# ##########
+# Set gaps
+# ##########
+
+gaps inner 1
+gaps outer 2
+
+
+# #################
+# Set keybindings
+# #################
+
+# drag floating windows with mouse
+floating_modifier $mod
+
+# Start Terminal
+bindsym $mod+Return exec st
+
+# Quit current focused window
+bindsym $mod+Shift+q kill
+
+# dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run
+
+# Change focused window
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Toggle window fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Set window layout for tiled windows
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle window floating/tiling
+bindsym $mod+Shift+space floating toggle
+
+# Switch focus between tiled and floating windows
+bindsym $mod+space focus mode_toggle
+
+
+bindsym $mod+a focus parent                         # Switch focus to parent container/window
+
+# Enable media keys for audio up, down, toggle sound mute and toggle mic mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+bindsym $mod+Shift+r restart                        # Restart i3 with new config
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# keybind mode
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+# Enter resize mode
+bindsym $mod+r mode "resize"
+
+
+
+
+# ##################
+# Setup workspaces
+# ##################
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+
+# ##################
+# Execute programs
+# ##################
+
+# Start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Start i3lock service
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork & disown
+
+# Start nm-applet in system tray
+exec --no-startup-id nm-applet & disown
+

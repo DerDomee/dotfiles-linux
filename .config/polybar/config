@@ -1,0 +1,23 @@
+[bar/topbar]
+enable-ipc = true
+width = 100%
+height = 26
+
+background = #1f1f1f
+foreground = #eeeeee
+separator = |
+line-size = 1
+
+modules-left = i3
+modules-center = i3
+modules-right = i3
+
+font-0 = NotoSans-Regular:size=9;0
+font-1 = Material\ Icons:size=11;2
+font-2 = xos4\ Terminus:size=14;0
+font-3 = Siji:pixelsize=11;1
+font-4 = FontAwesome:size=11;0
+
+[module/i3]
+type = internal/i3
+; vim:ft=dosini
