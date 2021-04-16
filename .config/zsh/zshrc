@@ -1,8 +1,16 @@
-
+# ######################### #
+#                           #
+#           zshrc           #
+#        by derdomee_       #
+#                           #
+# ######################### #
 
 
 alias p="sudo pacman --color=always"
 alias pacman="pacman --color=always"
 alias yay="yay --color=always"
 alias vim="nvim"
-alias config="/usr/bin/git --git-dir=$HOME/git/dotfiles-linux/ --work-tree=$HOME"
+alias config="/usr/bin/git --git-dir=$HOME/.local/share/dabs-repos/dotfiles-linux/ --work-tree=$HOME"
+
+# Reset cursor to vertical bar in prompt
+export PS1="$(printf '\e[6 q')$PS1"
