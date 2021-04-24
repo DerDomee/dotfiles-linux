@@ -5,15 +5,11 @@
 " #                                       #
 " #########################################
 
-" Import plugins
-runtime plugconf/_init.vim
+" Enable smarter tab line
+let g:airline#extensions#tabline#enabled = 1
 
-" Setup interface and editor
-runtime interface.vim
-runtime editor.vim
+" Enable powerline font (Arrow-like separators)
+let g:airline_powerline_fonts = 1
 
-" Plugin configuration for every plugin
-runtime plugins/nerdtree.vim
-
-" Setup keybindings
-runtime keybindings.vim
+" Set statusbar theme
+let g:airline_theme='gruvbox'

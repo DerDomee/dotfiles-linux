@@ -9,8 +9,12 @@
 " Indentation options
 " ####################
 set autoindent
-set expandtab
+set noexpandtab
 set shiftround
-set shiftwidth=4
+set shiftwidth=2
 set smarttab
-set tabstop=4
+set tabstop=2
+set softtabstop=-1
+
+set listchars=eol:↲,tab:>-,trail:~,extends:>,precedes:<,space:·
+set list

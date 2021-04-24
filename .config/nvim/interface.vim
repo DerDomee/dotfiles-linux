@@ -10,6 +10,7 @@
 " ##################
 set laststatus=2
 set ruler
+set signcolumn=yes
 set wildmenu
 set number
 set relativenumber
@@ -25,7 +26,7 @@ colorscheme gruvbox
 set display+=lastline
 set encoding=utf-8
 set linebreak
-set wrap
+set nowrap
 set scrolloff=3
 set sidescrolloff=7
 syntax enable

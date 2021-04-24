@@ -21,6 +21,11 @@ Plug 'ntpeters/vim-better-whitespace'           " Show trailing whitespace
 Plug 'frazrepo/vim-rainbow'                     " Same color on matching parantheses
 Plug 'sheerun/vim-polyglot'                     " Better and more syntax highlighting
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompletion
+Plug 'raimondi/delimitmate'						" Autocomplete closing brackets
+
+Plug 'eslint/eslint'                            " ESLint linter for Javascript
+
 Plug 'jez/vim-superman'                         " Read syntax highlighted man pages inside vim
 
 Plug 'airblade/vim-gitgutter'                   " Show git line modifications
@@ -32,8 +37,8 @@ Plug 'vim-airline/vim-airline-themes'           " Airline color themes
 Plug 'lambdalisue/battery.vim'                  " Show battery level in status bar
 Plug 'vim-airline/vim-airline'                  " Airline itself
 
-
 call plug#end()
 
-runtime plugins/nerdtree.vim
-runtime plugins/airline.vim
+runtime plugconf/nerdtree.vim
+runtime plugconf/airline.vim
+runtime plugconf/coc.vim
