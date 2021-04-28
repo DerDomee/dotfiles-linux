@@ -22,9 +22,11 @@ Plug 'frazrepo/vim-rainbow'                     " Same color on matching paranth
 Plug 'sheerun/vim-polyglot'                     " Better and more syntax highlighting
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompletion
-Plug 'raimondi/delimitmate'						" Autocomplete closing brackets
+Plug 'raimondi/delimitmate'                     " Autocomplete closing brackets
 
 Plug 'eslint/eslint'                            " ESLint linter for Javascript
+
+Plug 'ap/vim-css-color'                         " Preview colors in code
 
 Plug 'jez/vim-superman'                         " Read syntax highlighted man pages inside vim
 
