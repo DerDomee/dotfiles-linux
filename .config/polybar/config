@@ -26,8 +26,9 @@ secondary = #e60053
 success = #65b619
 warning = #f5a70a
 danger = #ff5555
+transparent = "#00000000"
 
-[bar/topbar]
+[bar/singlemonitor]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 25
@@ -52,12 +53,12 @@ module-margin-right = 2
 
 font-0 = "Fira Code:size=11"
 font-1 = "JoyPixels:pixelsize=10:antialias=false:autohint=false"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
-font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;1"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
+font-4 = "Font Awesome 5 Brands:pixelsize=10;1"
 
-modules-left = i3 xwindow
-modules-center =
+modules-left = i3
+modules-center = mpd
 modules-right = pulseaudio battery date
 
 tray-position = right
@@ -82,31 +83,48 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+ws-icon-10 = 11;
+ws-icon-11 = 12;
+ws-icon-12 = 13;
+ws-icon-13 = 14;
+ws-icon-14 = 15;
+ws-icon-15 = 16;
+ws-icon-16 = 17;
+ws-icon-17 = 18;
+ws-icon-18 = 19;
+ws-icon-19 = 20;
 
 label-mode-padding = 1
 label-mode-foreground = ${colors.background}
 label-mode-background = ${colors.primary}
 
-; focused = Active workspace on focused monitor
-label-focused = %index%
+; Active Workspace on the current monitor
+label-focused = %index% %icon%
 label-focused-background = ${colors.background-selected}
 label-focused-overline= ${colors.primary}
 label-focused-padding = 1
 
-
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-padding = 1
-
-; visible = Active workspace on unfocused monitor
-label-visible = %index%
+; Active Workspace on monitor other than current
+label-visible = %index% %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-padding = ${self.label-focused-padding}
 
-; urgent = Workspace with urgency hint set
-label-urgent = %index%
+; Inactive workspace on any monitor
+label-unfocused = %index% %icon%
+label-unfocused-padding = 1
+
+; Workspace on any monitor, shown or not shown, but with a window in it with urgent flag
+label-urgent = %index% %icon%
 label-urgent-background = ${colors.danger}
 label-urgent-padding = 1
 
@@ -169,14 +187,21 @@ battery = BAT1
 adapter = ADP1
 full-at = 98
 
-format-charging = <label-charging>
+format-charging = <ramp-capacity> <label-charging>
+format-charging-overline = "${colors.foreground-selected}"
 
-format-discharging = <label-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-overline = ${colors.secondary}
 
 format-full-prefix = ""
 format-full-prefix-foreground = ${colors.foreground-selected}
 format-full-overline = ${colors.primary}
+
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-3 = ""
+ramp-capacity-4 = ""
 
 [settings]
 screenchange-reload = true
