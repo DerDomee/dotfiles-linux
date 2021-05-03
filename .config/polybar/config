@@ -170,8 +170,9 @@ bar-volume-foreground-1 = ${colors.success}
 bar-volume-foreground-2 = ${colors.success}
 bar-volume-foreground-3 = ${colors.success}
 bar-volume-foreground-4 = ${colors.success}
-bar-volume-foreground-5 = ${colors.warning}
-bar-volume-foreground-6 = ${colors.danger}
+bar-volume-foreground-5 = ${colors.success}
+bar-volume-foreground-6 = ${colors.warning}
+bar-volume-foreground-7 = ${colors.danger}
 bar-volume-gradient = true
 bar-volume-indicator = "|"
 bar-volume-indicator-font = 0
@@ -193,8 +194,7 @@ format-charging-overline = "${colors.foreground-selected}"
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-overline = ${colors.secondary}
 
-format-full-prefix = ""
-format-full-prefix-foreground = ${colors.foreground-selected}
+format-full = "<ramp-capacity> <label-full>"
 format-full-overline = ${colors.primary}
 
 ramp-capacity-0 = ""
