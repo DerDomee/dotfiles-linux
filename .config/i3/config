@@ -55,7 +55,7 @@ client.background           #ffffff
 # ##########
 
 gaps inner 1
-gaps outer 2
+gaps outer 1
 
 
 # #################
@@ -91,6 +91,8 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+# Switch window focus left/right
+bindcode $mod+23 focus right
 
 # Toggle window fullscreen
 bindsym $mod+f fullscreen toggle
@@ -205,6 +207,9 @@ bindsym $mod+Mod1+7 workspace number $ws17
 bindsym $mod+Mod1+8 workspace number $ws18
 bindsym $mod+Mod1+9 workspace number $ws19
 bindsym $mod+Mod1+0 workspace number $ws20
+
+bindcode Mod1+23 workspace next
+bindcode Mod1+Shift+23 workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
