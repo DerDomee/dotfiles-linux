@@ -80,7 +80,7 @@ bindsym $mod+Shift+d exec --no-startup-id xfce4-appfinder
 for_window [class="Xfce4-appfinder"] floating enable
 
 # Open dmenu_emoji_picker
-bindsym $mod+period exec --no-startup-id dmenu_emoji_picker.sh -l 40 -f -i
+bindsym $mod+period exec --no-startup-id dmenu_emoji_picker.sh -l 40 -f -i -h 30
 
 
 # Change focused window
