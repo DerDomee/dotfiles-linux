@@ -35,7 +35,7 @@ focus_wrapping yes
 # #############
 
 # Disable window title borders
-for_window [class="$.*"] border pixel 2
+for_window [class="$.*"] border pixel 1
 new_window 1pixel
 
 
@@ -54,8 +54,8 @@ client.background           #ffffff
 # Set gaps
 # ##########
 
-gaps inner 1
-gaps outer 1
+gaps inner 0
+gaps outer 0
 
 
 # #################
@@ -78,6 +78,9 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+Shift+d exec --no-startup-id xfce4-appfinder
 # Tell Appfinder window to float always
 for_window [class="Xfce4-appfinder"] floating enable
+
+# Open dmenu_emoji_picker
+bindsym $mod+period exec --no-startup-id dmenu_emoji_picker.sh -l 40 -f -i
 
 
 # Change focused window
@@ -118,10 +121,10 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Media keys for play-pause/next/prev
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id --no-startup-idd playerctl previous
 
 # Screen Brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 -time 0
@@ -135,6 +138,9 @@ bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec --no-startup-id dmenu_exit_i3.sh
+
+# What to do on pressing power button
+bindsym XF86PowerOff exec --no-startup-id dmenu_power_menu.sh
 
 # keybind mode
 mode "resize" {
