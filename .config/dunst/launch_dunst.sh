@@ -6,6 +6,6 @@ killall -q dunst
 while pgrep -u $UID -x dunst >/dev/null; do sleep 1; done
 # Start new polybar instances
 dunst -config "$HOME/.config/dunst/config" &
-notify-send -u normal "Test notification 1"
+notify-send -u low "Dunst launched" "Notification manager active"
 echo "Dunst launched"
 
