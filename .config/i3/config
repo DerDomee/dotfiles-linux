@@ -124,7 +124,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPrev exec --no-startup-id --no-startup-idd playerctl previous
+bindsym XF86AudioPrev exec --no-startup-id --no-startup-id playerctl previous
 
 # Screen Brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 -time 0
@@ -249,6 +249,9 @@ exec_always --no-startup-id xsetroot -solid "#282828"
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch_singlemonitor.sh
+
+# Start dunst notification manager
+exec_always --no-startup-id $HOME/.config/dunst/launch_dunst.sh
 
 # Start nm-applet in system tray
 exec --no-startup-id nm-applet & disown
