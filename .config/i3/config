@@ -9,8 +9,6 @@
 # Set Super key as i3 mod key
 set $mod Mod4
 
-font pango:monospace 8
-
 # ###############
 # Set behaviour
 # ###############
@@ -80,7 +78,7 @@ bindsym $mod+Shift+d exec --no-startup-id xfce4-appfinder
 for_window [class="Xfce4-appfinder"] floating enable
 
 # Open dmenu_emoji_picker
-bindsym $mod+period exec --no-startup-id dmenu_emoji_picker.sh -l 40 -f -i -h 30
+bindsym $mod+period exec --no-startup-id dmenu_emoji_picker.sh -F -l 40 -g 4 -f -i -h 30
 
 
 # Change focused window
@@ -124,14 +122,14 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPrev exec --no-startup-id --no-startup-id playerctl previous
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Screen Brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 -time 0
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 -time 0
 
 # Screenshot
-bindsym --release $mod+Shift+s exec --no-startup-id i3-scrot -sc
+bindsym --release $mod+Shift+s exec --no-startup-id scrot -sf -e 'xclip -selection clipboard -t image/png -i $f && rm $f'
 
 # Restart i3 with new config
 bindsym $mod+Shift+r restart
