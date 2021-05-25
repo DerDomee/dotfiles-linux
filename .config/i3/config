@@ -125,8 +125,8 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Screen Brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 -time 0
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 -time 0
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 -time 0
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 -time 0
 
 # Screenshot
 bindsym --release $mod+Shift+s exec --no-startup-id scrot -sf -e 'xclip -selection clipboard -t image/png -i $f && rm $f'
