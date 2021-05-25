@@ -1,0 +1,43 @@
+# ################### #
+#                     #
+#       Newsboat      #
+# config by derdomee_ #
+#                     #
+# ################### #
+
+
+auto-reload yes
+
+datetime-format "%d.%m.%y - %H:%M"
+
+#     element            text       background   attributes
+color info               color76    color233     bold
+color listnormal         color253   black
+color listnormal_unread  color253   black        bold
+color listfocus          black      color253     bold
+color listfocus_unread   black      color253     bold
+color background         color253   black
+color article            color253   black
+
+highlight article "^Feed:.*" magenta default
+highlight article "^Title:.*" yellow default bold
+highlight article "^Author:.*" green default
+highlight article "^Date:.*" color223 default
+highlight article "^Link:.*" blue default
+highlight article "^Flags:.*" color9 default
+highlight article "\\[[0-9][0-9]*\\]" color66 default bold
+highlight article "\\[image [0-9][0-9]*\\]" color109 default bold
+highlight article "\\[embedded flash: [0-9][0-9]*\\]" color66 default bold
+
+
+highlight feedlist "^.*│ " white default
+highlight feedlist "   News: " yellow default bold
+highlight feedlist "   Blog: " green default bold
+highlight feedlist "Podcast: " magenta default bold
+highlight feedlist "Twitter: " blue default bold
+highlight feedlist "YouTube: " red default bold
+
+feedlist-format "%4i %3U │ %7T:  %-60t"
+
+highlight articlelist "^.*~ " white default
+articlelist-format "%4i %D ~  %t"
