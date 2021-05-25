@@ -20,6 +20,7 @@ Plug 'preservim/tagbar'                         " Code outline viewer
 Plug 'ntpeters/vim-better-whitespace'           " Show trailing whitespace
 Plug 'frazrepo/vim-rainbow'                     " Same color on matching parantheses
 Plug 'sheerun/vim-polyglot'                     " Better and more syntax highlighting
+Plug 'nikvdp/ejs-syntax'                        " Syntax highlighting for ejs files
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompletion
 Plug 'raimondi/delimitmate'                     " Autocomplete closing brackets
