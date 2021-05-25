@@ -12,6 +12,7 @@ alias yay="yay --color=always"
 alias vim="nvim"
 alias see="highlight --force -O ansi"
 alias config="/usr/bin/git --git-dir=$HOME/.local/share/dabs-repos/dotfiles-linux/ --work-tree=$HOME"
+alias \:q="exit" # Use vim keybinding
 
 # Reset cursor to vertical bar in prompt
 export PS1="$(printf '\e[6 q')$PS1"
