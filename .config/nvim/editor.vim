@@ -11,10 +11,13 @@
 set autoindent
 set noexpandtab
 set shiftround
-set shiftwidth=2
+set shiftwidth=4
 set smarttab
-set tabstop=2
-set softtabstop=-1
+set copyindent
+set preserveindent
+set tabstop=4
+set softtabstop=0
 
 set listchars=eol:↲,tab:>-,trail:~,extends:>,precedes:<,space:·
 set list
+
