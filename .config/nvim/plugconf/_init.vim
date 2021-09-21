@@ -34,6 +34,8 @@ Plug 'jez/vim-superman'                         " Read syntax highlighted man pa
 Plug 'airblade/vim-gitgutter'                   " Show git line modifications
 Plug 'tpope/vim-fugitive'                       " Git wrapper in vim
 
+Plug 'andweeb/presence.nvim'                    " Discord rich presence
+
 Plug 'morhetz/gruvbox'                          " Colortheme
 
 Plug 'vim-airline/vim-airline-themes'           " Airline color themes
