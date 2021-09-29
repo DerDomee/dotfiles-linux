@@ -44,6 +44,12 @@ Plug 'vim-airline/vim-airline'                  " Airline itself
 
 call plug#end()
 
+
+" Coc Plugin definition
+
+let g:coc_global_extensions = ["coc-json", "coc-jest", "coc-prettier", "coc-tsserver", "coc-tailwindcss"]
+
+
 runtime plugconf/nerdtree.vim
 runtime plugconf/airline.vim
 runtime plugconf/coc.vim
