@@ -254,4 +254,6 @@ exec_always --no-startup-id $HOME/.config/dunst/launch_dunst.sh
 
 # Start nm-applet in system tray
 exec --no-startup-id nm-applet & disown
-
+exec_always --no-startup-id xmodmap -e "clear lock"
+exec_always --no-startup-id xmodmap -e "keysym Caps_Lock = Escape"
+exec_always --no-startup-id $HOME/.local/bin/disableCaps.sh
