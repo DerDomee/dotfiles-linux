@@ -94,6 +94,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 # Switch window focus left/right
 bindcode $mod+23 focus right
+bindcode $mod+Shift+23 focus left
 
 # Toggle window fullscreen
 bindsym $mod+f fullscreen toggle
