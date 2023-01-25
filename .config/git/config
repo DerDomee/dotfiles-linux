@@ -2,7 +2,13 @@
 	name = Dominik Riedig
 	email = me@dominikriedig.de
 	signingkey = 43F49FF3BDD38C65F9B6FFDF295281FB39AA3334
+[web]
+	browser = firefox
 [commit]
 	gpgSign = true
 [init]
 	defaultBranch = main
+[core]
+	pager = less
+	excludesfile = /home/dominik/.config/git/gitignore_global
+	editor = nvim
