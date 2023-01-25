@@ -1,0 +1,11 @@
+{
+	"prettier.useTabs": true,
+	"prettier.printWidth": 70,
+	"prettier.singleQuote": true,
+	"prettier.tabWidth": 2,
+	"prettier.trailingComma": "es5",
+	"prettier.eslintIntegration": true,
+	"prettier.tslintIntegration": true,
+	"prettier.stylelintIntegration": true,
+	"coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "css", "python"]
+}
