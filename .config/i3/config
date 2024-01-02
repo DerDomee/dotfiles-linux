@@ -7,7 +7,13 @@
 ###############################
 
 # Set Super key as i3 mod key
-set $mod Mod4
+set $super Mod4
+set $l_alt Mod1
+set $shift Shift
+
+# Set monitor variables
+set $left_monitor HDMI-0
+set $right_monitor DP-0
 
 # ###############
 # Set behaviour
@@ -17,8 +23,8 @@ set $mod Mod4
 focus_follows_mouse no
 
 # When switching between monitors when focussing another window or workspaces,
-# move the mouse to the center of that window
-mouse_warping output
+# do not teleport the mouse to the new monitor
+mouse_warping none
 
 # When a window is fullscreen, only show popup windows from this windows class.
 # Other windows are ignored
@@ -26,7 +32,7 @@ popup_during_fullscreen smart
 
 # Cycle through windows in a container when focus to the edge of the container
 # e.g: Right-most window is focused. Change focus to right to focus left-most window.
-focus_wrapping yes
+focus_wrapping workspace
 
 # #############
 # Set borders
@@ -34,7 +40,6 @@ focus_wrapping yes
 
 # Disable window title borders
 for_window [class="$.*"] border pixel 1
-new_window 1pixel
 
 
 # ############
@@ -42,7 +47,7 @@ new_window 1pixel
 # ############
 #                           Border    Backgr.   Text      Indicator Childborder
 client.focused              #65b619   #65b619   #ffffff   #65b619   #65b619
-client.focused_inactive     #65b619   #65b619   #ffffff   #65b619   #65b619
+client.focused_inactive     #333333   #222222   #ffffff   #65b619   #65b619
 client.unfocused            #333333   #222222   #888888   #292d2e   #222222
 client.urgent               #2f343a   #900000   #ffffff   #900000   #900000
 client.placeholder          #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
@@ -61,61 +66,61 @@ gaps outer 0
 # #################
 
 # drag floating windows with mouse
-floating_modifier $mod
+floating_modifier $super
 
 # Start Terminal
-bindsym $mod+Return exec --no-startup-id st
+bindsym $super+Return exec --no-startup-id st
 
 # Quit current focused window
-bindsym $mod+Shift+q kill
+bindsym $super+Shift+q kill
 
 # Open dmenu_run (Quick appfinder)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $super+d exec --no-startup-id dmenu_run
 
 # Open XFCE4-Appfinder
-bindsym $mod+Shift+d exec --no-startup-id xfce4-appfinder
+bindsym $super+Shift+d exec --no-startup-id xfce4-appfinder
 # Tell Appfinder window to float always
 for_window [class="Xfce4-appfinder"] floating enable
 
 # Open dmenu_emoji_picker
-bindsym $mod+period exec --no-startup-id dmenu_emoji_picker.sh -F -l 40 -g 4 -f -i -h 30
+bindsym $super+period exec --no-startup-id dmenu_emoji_picker.sh -F -l 40 -g 4 -f -i -h 30
 
 
 # Change focused window
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $super+h focus left
+bindsym $super+j focus down
+bindsym $super+k focus up
+bindsym $super+l focus right
 
 # Move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $super+Shift+h move left
+bindsym $super+Shift+j move down
+bindsym $super+Shift+k move up
+bindsym $super+Shift+l move right
 # Switch window focus left/right
-bindcode $mod+23 focus right
-bindcode $mod+Shift+23 focus left
+bindcode $super+23 focus right
+bindcode $super+Shift+23 focus left
 
 # Toggle window fullscreen
-bindsym $mod+f fullscreen toggle
+bindsym $super+f fullscreen toggle
 
 # Set window layout for tiled windows
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $super+s layout stacking
+bindsym $super+w layout tabbed
+bindsym $super+e layout toggle split
 
 # Toggle window floating/tiling
-bindsym $mod+Shift+space floating toggle
+bindsym $super+Shift+space floating toggle
 
 # Switch focus between tiled and floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $super+space focus mode_toggle
 
 
-bindsym $mod+a focus parent                         # Switch focus to parent container/window
+bindsym $super+a focus parent                         # Switch focus to parent container/window
 
 # Enable media keys for audio up, down, toggle sound mute and toggle mic mute
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer --increase 2 && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer --decrease 2 && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -130,16 +135,19 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 -time 0
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 -time 0
 
 # Screenshot
-bindsym --release $mod+Shift+s exec --no-startup-id scrot -sf -e 'xclip -selection clipboard -t image/png -i $f && rm $f'
+bindsym --release $super+Shift+s exec --no-startup-id scrot -s -e 'xclip -selection clipboard -t image/png -i $f && rm $f'
 
 # Restart i3 with new config
-bindsym $mod+Shift+r restart
+bindsym $super+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec --no-startup-id dmenu_exit_i3.sh
+bindsym $super+Shift+e exec --no-startup-id dmenu_exit_i3.sh
 
 # What to do on pressing power button
 bindsym XF86PowerOff exec --no-startup-id dmenu_power_menu.sh
+
+# Start screenlocker when pressing $super+l
+bindsym $l_alt+l exec --no-startup-id betterlockscreen -l
 
 # keybind mode
 mode "resize" {
@@ -154,13 +162,13 @@ mode "resize" {
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
+        # back to normal: Enter or Escape or $super+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+        bindsym $super+r mode "default"
 }
 # Enter resize mode
-bindsym $mod+r mode "resize"
+bindsym $super+r mode "resize"
 
 
 
@@ -190,70 +198,121 @@ set $ws18 "18"
 set $ws19 "19"
 set $ws20 "20"
 
-# switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+workspace $ws1 output $left_monitor
+workspace $ws2 output $left_monitor
+workspace $ws3 output $left_monitor
+workspace $ws4 output $left_monitor
+workspace $ws5 output $left_monitor
+workspace $ws6 output $left_monitor
+workspace $ws7 output $left_monitor
+workspace $ws8 output $left_monitor
+workspace $ws9 output $left_monitor
+workspace $ws10 output $left_monitor
 
-bindsym $mod+Mod1+1 workspace number $ws11
-bindsym $mod+Mod1+2 workspace number $ws12
-bindsym $mod+Mod1+3 workspace number $ws13
-bindsym $mod+Mod1+4 workspace number $ws14
-bindsym $mod+Mod1+5 workspace number $ws15
-bindsym $mod+Mod1+6 workspace number $ws16
-bindsym $mod+Mod1+7 workspace number $ws17
-bindsym $mod+Mod1+8 workspace number $ws18
-bindsym $mod+Mod1+9 workspace number $ws19
-bindsym $mod+Mod1+0 workspace number $ws20
+workspace $ws11 output $right_monitor
+workspace $ws12 output $right_monitor
+workspace $ws13 output $right_monitor
+workspace $ws14 output $right_monitor
+workspace $ws15 output $right_monitor
+workspace $ws16 output $right_monitor
+workspace $ws17 output $right_monitor
+workspace $ws18 output $right_monitor
+workspace $ws19 output $right_monitor
+workspace $ws20 output $right_monitor
+
+
+# switch to workspace
+bindsym $super+1 workspace number $ws1
+bindsym $super+2 workspace number $ws2
+bindsym $super+3 workspace number $ws3
+bindsym $super+4 workspace number $ws4
+bindsym $super+5 workspace number $ws5
+bindsym $super+6 workspace number $ws6
+bindsym $super+7 workspace number $ws7
+bindsym $super+8 workspace number $ws8
+bindsym $super+9 workspace number $ws9
+bindsym $super+0 workspace number $ws10
+
+bindsym $l_alt+1 workspace number $ws11
+bindsym $l_alt+2 workspace number $ws12
+bindsym $l_alt+3 workspace number $ws13
+bindsym $l_alt+4 workspace number $ws14
+bindsym $l_alt+5 workspace number $ws15
+bindsym $l_alt+6 workspace number $ws16
+bindsym $l_alt+7 workspace number $ws17
+bindsym $l_alt+8 workspace number $ws18
+bindsym $l_alt+9 workspace number $ws19
+bindsym $l_alt+0 workspace number $ws20
 
 bindcode Mod1+23 workspace next
 bindcode Mod1+Shift+23 workspace prev
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $super+Shift+1 move container to workspace number $ws1
+bindsym $super+Shift+2 move container to workspace number $ws2
+bindsym $super+Shift+3 move container to workspace number $ws3
+bindsym $super+Shift+4 move container to workspace number $ws4
+bindsym $super+Shift+5 move container to workspace number $ws5
+bindsym $super+Shift+6 move container to workspace number $ws6
+bindsym $super+Shift+7 move container to workspace number $ws7
+bindsym $super+Shift+8 move container to workspace number $ws8
+bindsym $super+Shift+9 move container to workspace number $ws9
+bindsym $super+Shift+0 move container to workspace number $ws10
 
-bindsym $mod+Shift+Mod1+1 move container to workspace number $ws11
-bindsym $mod+Shift+Mod1+2 move container to workspace number $ws12
-bindsym $mod+Shift+Mod1+3 move container to workspace number $ws13
-bindsym $mod+Shift+Mod1+4 move container to workspace number $ws14
-bindsym $mod+Shift+Mod1+5 move container to workspace number $ws15
-bindsym $mod+Shift+Mod1+6 move container to workspace number $ws16
-bindsym $mod+Shift+Mod1+7 move container to workspace number $ws17
-bindsym $mod+Shift+Mod1+8 move container to workspace number $ws18
-bindsym $mod+Shift+Mod1+9 move container to workspace number $ws19
-bindsym $mod+Shift+Mod1+0 move container to workspace number $ws20
+bindsym $l_alt+Shift+1 move container to workspace number $ws11
+bindsym $l_alt+Shift+2 move container to workspace number $ws12
+bindsym $l_alt+Shift+3 move container to workspace number $ws13
+bindsym $l_alt+Shift+4 move container to workspace number $ws14
+bindsym $l_alt+Shift+5 move container to workspace number $ws15
+bindsym $l_alt+Shift+6 move container to workspace number $ws16
+bindsym $l_alt+Shift+7 move container to workspace number $ws17
+bindsym $l_alt+Shift+8 move container to workspace number $ws18
+bindsym $l_alt+Shift+9 move container to workspace number $ws19
+bindsym $l_alt+Shift+0 move container to workspace number $ws20
 
 
 # ##################
-# Execute programs
+# Execute daemon programs
 # ##################
 # Set wallpaper background
 exec_always --no-startup-id xsetroot -solid "#282828"
 
 # Start polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch_singlemonitor.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh primary_monitor secondary_monitor
 
 # Start dunst notification manager
 exec_always --no-startup-id $HOME/.config/dunst/launch_dunst.sh
 
 # Start nm-applet in system tray
 exec --no-startup-id nm-applet & disown
+
+# Set monitor configuration as saved in autorandr
+exec_always --no-startup-id autorandr -c
+
+# Rebind caps lock to instead type "Esc"
 exec_always --no-startup-id xmodmap -e "clear lock"
 exec_always --no-startup-id xmodmap -e "keysym Caps_Lock = Escape"
-exec_always --no-startup-id $HOME/.local/bin/disableCaps.sh
+exec_always --no-startup-id disableCaps.sh
+
+# Set mouse speed
+exec_always --no-startup-id xinput set-prop "Logitech G502 HERO Gaming Mouse" "libinput Accel Speed" -0.25
+exec_always --no-startup-id nvm use default
+
+
+# ###################
+# Execute frontend autostart programs in specific workspaces
+# ###################
+exec --no-startup-id i3-msg 'workspace $ws20; exec --no-startup-id /usr/bin/thunderbird'
+exec --no-startup-id i3-msg 'workspace $ws19; exec --no-startup-id /usr/bin/telegram-desktop'
+exec --no-startup-id i3-msg 'workspace $ws18; exec --no-startup-id /usr/bin/discord'
+exec --no-startup-id i3-msg 'workspace $ws17; exec --no-startup-id /usr/bin/spotify'
+exec --no-startup-id i3-msg 'workspace $ws16; exec --no-startup-id /usr/bin/qbittorrent'
+exec --no-startup-id i3-msg 'workspace $ws15; exec --no-startup-id /usr/bin/obsidian'
+assign [title="Obsidian"] $ws15
+assign [title="qBittorrent"] $ws16
+assign [title="Spotify"] $ws17
+assign [title="Discord"] $ws18
+assign [title="Telegram"] $ws19
+assign [title="Thunderbird"] $ws20
+exec --no-startup-id i3-msg 'workspace $ws11'
+exec --no-startup-id i3-msg 'workspace $ws1'
