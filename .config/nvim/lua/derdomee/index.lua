@@ -1,9 +1,13 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local plugins = {
 	require("derdomee.plugins.telescope"),
 	require("derdomee.plugins.themery-nvim"),
 
 	require("derdomee.plugins.lualine"),
 	require("derdomee.plugins.bufferline"),
+	require("derdomee.plugins.nvim-tree"),
 	require("derdomee.plugins.nvim-toggleterm"),
 	require("derdomee.plugins.neogit"),
 
@@ -20,3 +24,4 @@ local opts = {}
 require("lazy").setup(plugins, opts)
 
 require("derdomee.themes._current-theme")
+require("derdomee.keybinds")
