@@ -24,4 +24,7 @@ local opts = {}
 require("lazy").setup(plugins, opts)
 
 require("derdomee.themes._current-theme")
+
+require("derdomee.config.editor")
+
 require("derdomee.keybinds")
