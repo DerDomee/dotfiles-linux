@@ -10,12 +10,62 @@ require("themery").setup({
 			]]
 		},
 		{
+			name = "Tokyo Dark Storm",
+			colorscheme = "tokyonight",
+			before = [[
+				require("tokyonight").setup({
+					style = "storm"
+				})
+			]],
+			after = [[
+				require("tokyonight").setup({
+					style = "storm"
+				})
+			]],
+		},
+		{
+			name = "Tokyo Dark Moon",
+			colorscheme = "tokyonight",
+			before = [[
+				require("tokyonight").setup({
+					style = "moon"
+				})
+			]],
+			after = [[
+				require("tokyonight").setup({
+					style = "moon"
+				})
+			]]
+		},
+		{
+			name = "Tokyo Dark Night",
+			colorscheme = "tokyonight",
+			before = [[
+				require("tokyonight").setup({
+					style = "night"
+				})
+			]],
+			after = [[
+				require("tokyonight").setup({
+					style = "night"
+				})
+			]],
+		},
+		{
 			name = "VS Code Dark+",
 			colorscheme = "vscode",
 			before = [[
 				vim.opt.background = 'dark'
+				require("vscode").setup({
+					style = 'dark',
+					transparent = false,
+					italic_comments = true,
+
+				})
+				require("vscode").load()
 			]],
 			after = [[
+				vim.opt.background = 'dark'
 				require("vscode").setup({
 					style = 'dark',
 					transparent = false,
@@ -37,8 +87,16 @@ require("themery").setup({
 			colorscheme = "vscode",
 			before = [[
 				vim.opt.background = 'light'
+				require("vscode").setup({
+					style = 'light',
+					transparent = false,
+					italic_comments = true,
+
+				})
+				require("vscode").load()
 			]],
 			after = [[
+				vim.opt.background = 'light'
 				require("vscode").setup({
 					style = 'light',
 					transparent = false,
@@ -47,6 +105,20 @@ require("themery").setup({
 				})
 				require("vscode").load()
 			]]
+		},
+		{
+			name = "Tokyo Light Day",
+			colorscheme = "tokyonight",
+			before = [[
+				require("tokyonight").setup({
+					light_style = "day"
+				})
+			]],
+			after = [[
+				require("tokyonight").setup({
+					light_style = "day"
+				})
+			]],
 		},
 	},
 	themeConfigFile = '~/.config/nvim/lua/derdomee/themes/_current-theme.lua',

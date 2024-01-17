@@ -1,17 +1,15 @@
 -- Themery block
 -- This block will be replaced by Themery.
-vim.opt.background = 'dark'
-
-
-vim.cmd("colorscheme vscode")
-
-require("vscode").setup({
-style = 'dark',
-transparent = false,
-italic_comments = true,
-
+require("tokyonight").setup({
+style = "night"
 })
-require("vscode").load()
 
-vim.g.theme_id = 2
+
+vim.cmd("colorscheme tokyonight")
+
+require("tokyonight").setup({
+style = "night"
+})
+
+vim.g.theme_id = 4
 -- end themery block

@@ -1,4 +1,4 @@
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 
 -- Toggle between relative and absolute line numbers
 vim.api.nvim_set_keymap('n', '<Leader>nt', '<cmd>lua vim.wo.relativenumber = not vim.wo.relativenumber<CR>', {noremap = true, silent = true})
