@@ -23,6 +23,8 @@ end)
 
 ibl.setup({
 	indent = {
+		-- char gets set inside editor.lua configuration
+		-- as part of `vim.o.listchars`.
 		char ="",
 		highlight = indentCharacterColors,
 	},

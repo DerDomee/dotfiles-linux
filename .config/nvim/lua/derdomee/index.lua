@@ -3,6 +3,8 @@ vim.g.loaded_netrwPlugin = 1
 
 local plugins = {
 
+	require("derdomee.plugins.nvim-treesitter"),
+	require("derdomee.plugins.nvim-ts-rainbow2"),
 	require("derdomee.plugins.indent-blankline-nvim"),
 
 	require("derdomee.plugins.telescope"),
