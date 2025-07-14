@@ -1,0 +1,11 @@
+#!/usr/bin/sh
+
+i3-msg workspace 1
+st -e zsh -c "sleep 0.101; cmatrix -abu2 && killall cmatrix || killall cmatrix; killall cmatrix" &
+sleep 0.1
+i3-msg fullscreen toggle
+i3-msg workspace 15
+st -e zsh -c "sleep 0.101; cmatrix -abu4 && killall cmatrix || killall cmatrix; killall cmatrix" &
+sleep 0.1
+i3-msg fullscreen toggle
+i3-msg workspace 1
