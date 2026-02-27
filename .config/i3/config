@@ -69,7 +69,7 @@ gaps outer 0
 floating_modifier $super
 
 # Start Terminal
-bindsym $super+Return exec --no-startup-id st
+bindsym $super+Return exec --no-startup-id st -e tmux new -A -s main
 
 # Quit current focused window
 bindsym $super+Shift+q kill
@@ -147,7 +147,7 @@ bindsym $super+Shift+e exec --no-startup-id dmenu_exit_i3.sh
 bindsym XF86PowerOff exec --no-startup-id dmenu_power_menu.sh
 
 # Start screenlocker when pressing $super+l
-bindsym $l_alt+l exec --no-startup-id betterlockscreen -l
+bindsym $super+$l_alt+l exec --no-startup-id betterlockscreen -l
 
 # keybind mode
 mode "resize" {
@@ -298,21 +298,22 @@ exec_always --no-startup-id disableCaps.sh
 exec_always --no-startup-id xinput set-prop "Logitech G502 HERO Gaming Mouse" "libinput Accel Speed" -0.25
 exec_always --no-startup-id nvm use default
 
+# Night Blue filter
+exec --no-startup-id redshift -P -l 53.36795:7.20447
+
 
 # ###################
 # Execute frontend autostart programs in specific workspaces
 # ###################
-exec --no-startup-id i3-msg 'workspace $ws20; exec --no-startup-id /usr/bin/thunderbird'
-exec --no-startup-id i3-msg 'workspace $ws19; exec --no-startup-id /usr/bin/telegram-desktop'
-exec --no-startup-id i3-msg 'workspace $ws18; exec --no-startup-id /usr/bin/discord'
-exec --no-startup-id i3-msg 'workspace $ws17; exec --no-startup-id /usr/bin/spotify'
-exec --no-startup-id i3-msg 'workspace $ws16; exec --no-startup-id /usr/bin/qbittorrent'
-exec --no-startup-id i3-msg 'workspace $ws15; exec --no-startup-id /usr/bin/obsidian'
 assign [title="Obsidian"] $ws15
 assign [title="qBittorrent"] $ws16
 assign [title="Spotify"] $ws17
 assign [title="Discord"] $ws18
 assign [title="Telegram"] $ws19
 assign [title="Thunderbird"] $ws20
-exec --no-startup-id i3-msg 'workspace $ws11'
-exec --no-startup-id i3-msg 'workspace $ws1'
+exec --no-startup-id i3-msg 'exec --no-startup-id /usr/bin/thunderbird'
+exec --no-startup-id i3-msg 'exec --no-startup-id /usr/bin/Telegram'
+exec --no-startup-id i3-msg 'exec --no-startup-id /usr/bin/discord'
+exec --no-startup-id i3-msg 'exec --no-startup-id /usr/bin/spotify'
+exec --no-startup-id i3-msg 'exec --no-startup-id /usr/bin/qbittorrent'
+exec --no-startup-id i3-msg 'exec --no-startup-id /usr/bin/obsidian'
