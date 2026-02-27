@@ -26,6 +26,11 @@
     # Sort messages by urgency
     sort = yes
 
+    # Mouse Actions
+    mouse_left_click = do_action
+    mouse_middle_click = context
+    mouse_right_click = close_current
+
     # Show how many messages are currently hidden (because of geometry)
     indicate_hidden = yes
 
