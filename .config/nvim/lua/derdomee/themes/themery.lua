@@ -121,6 +121,5 @@ require("themery").setup({
 			]],
 		},
 	},
-	themeConfigFile = '~/.config/nvim/lua/derdomee/themes/_current-theme.lua',
 	livePreview = true,
 })

@@ -7,6 +7,8 @@ local plugins = {
 	require("derdomee.plugins.nvim-ts-rainbow2"),
 	require("derdomee.plugins.indent-blankline-nvim"),
 
+	require("derdomee.plugins.vim-tmux-navigator"),
+
 	require("derdomee.plugins.telescope"),
 	require("derdomee.plugins.themery-nvim"),
 

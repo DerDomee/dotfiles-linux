@@ -4,6 +4,9 @@ nvim_tree.setup({
 	disable_netrw = true,
 	hijack_unnamed_buffer_when_opening = true,
 	hijack_cursor = true,
+	view = {
+		side = "right",
+	},
 	sort = {
 		sorter = "name",
 		folders_first = true,
