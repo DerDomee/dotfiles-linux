@@ -12,3 +12,6 @@
 	pager = less
 	excludesfile = /home/dominik/.config/git/gitignore_global
 	editor = nvim
+	askPass = ksshaskpass
+[credential]
+	helper = libsecret
