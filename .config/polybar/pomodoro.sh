@@ -136,14 +136,14 @@ format_time() {
 output_line() {
     local emoji="$1" text="$2" text_color="$3" click_action="$4"
     local menu_cmd="${SCRIPT_DIR}/pomodoro.sh menu"
-    local dot="%{A1:${menu_cmd}:}%{A3:${menu_cmd}:}%{F${color_menu_dot}}•%{F-}%{A}%{A}"
-    local prefix="%{T2}🍅%{T-}"
-    local styled_emoji="%{T2}${emoji}%{T-}"
+    local tomato="%{A1:${menu_cmd}:}%{A3:${menu_cmd}:}%{T2}🍅%{T-}%{A}%{A}"
+    local styled_emoji=""
+    [[ -n "$emoji" ]] && styled_emoji=" %{T2}${emoji}%{T-}"
 
     if [[ -n "$click_action" ]]; then
-        echo "%{A1:${click_action}:}${prefix} ${styled_emoji} %{F${text_color}}${text}%{F-}%{A} ${dot}"
+        echo "${tomato}%{A1:${click_action}:}${styled_emoji} %{F${text_color}}${text}%{F-}%{A}"
     else
-        echo "${prefix} ${styled_emoji} %{F${text_color}}${text}%{F-} ${dot}"
+        echo "${tomato}${styled_emoji} %{F${text_color}}${text}%{F-}"
     fi
 }
 
@@ -153,9 +153,9 @@ cmd_display() {
     load_config
     load_state
 
-    # Stopped — early exit
+    # Stopped — early exit (no state emoji, just text)
     if [[ "$current_state" == "stopped" ]]; then
-        output_line "$emoji_stopped" "$text_stopped" "$color_stopped"
+        output_line "" "$text_stopped" "$color_stopped"
         save_state
         return
     fi
