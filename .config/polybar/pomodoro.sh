@@ -132,15 +132,18 @@ format_time() {
 
 # Build the polybar output line
 # Args: emoji text text_color [click_action_for_emoji_and_text]
+# Emojis are wrapped in %{T2} to use JoyPixels (font-1) at the correct size.
 output_line() {
     local emoji="$1" text="$2" text_color="$3" click_action="$4"
     local menu_cmd="${SCRIPT_DIR}/pomodoro.sh menu"
     local dot="%{A1:${menu_cmd}:}%{A3:${menu_cmd}:}%{F${color_menu_dot}}•%{F-}%{A}%{A}"
+    local prefix="%{T2}🍅%{T-}"
+    local styled_emoji="%{T2}${emoji}%{T-}"
 
     if [[ -n "$click_action" ]]; then
-        echo "%{A1:${click_action}:}${emoji} %{F${text_color}}${text}%{F-}%{A} ${dot}"
+        echo "%{A1:${click_action}:}${prefix} ${styled_emoji} %{F${text_color}}${text}%{F-}%{A} ${dot}"
     else
-        echo "${emoji} %{F${text_color}}${text}%{F-} ${dot}"
+        echo "${prefix} ${styled_emoji} %{F${text_color}}${text}%{F-} ${dot}"
     fi
 }
 
